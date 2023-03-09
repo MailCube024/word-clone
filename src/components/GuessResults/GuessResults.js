@@ -1,6 +1,6 @@
 import React from "react";
 
-function GuessList({ guesses }) {
+function GuessResults({ guesses }) {
   return (
     <div>
       {guesses.map(({ id, guess }) => (
@@ -12,4 +12,4 @@ function GuessList({ guesses }) {
   );
 }
 
-export default GuessList;
+export default GuessResults;
