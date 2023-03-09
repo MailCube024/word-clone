@@ -12,8 +12,6 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  // const r = range(0, constant);
-
   const [guesses, setGuesses] = useState(
     range(0, NUM_OF_GUESSES_ALLOWED).map((num) => {
       return { guess: "", id: num };

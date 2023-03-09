@@ -3,6 +3,8 @@ import { range } from "../../utils";
 import { MAX_LENGTH_WORDS } from "../../constants";
 
 function Guess({ guess }) {
+  const characters = [...guess];
+
   const getCell = (index, char = "") => (
     <span key={index} className="cell">
       {char}
@@ -13,8 +15,8 @@ function Guess({ guess }) {
     return range(0, MAX_LENGTH_WORDS).map((num) => getCell(num));
   };
 
-  return !!guess
-    ? guess.split("").map((c, index) => getCell(index, c))
+  return characters.length > 1
+    ? characters.map((c, index) => getCell(index, c))
     : getBlankCells();
 }
 
