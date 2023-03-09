@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const GuessInput = ({ submitGuess }) => {
+const GuessInput = ({ submitGuess, canSubmitGuess }) => {
   const [guess, setGuess] = useState("");
 
   const capitalize = (str) => str.toUpperCase();
@@ -17,6 +17,7 @@ const GuessInput = ({ submitGuess }) => {
       <label htmlFor="guess-input">Enter guess:</label>
       <input
         id="guess-input"
+        disabled={!canSubmitGuess}
         required
         minLength={5}
         maxLength={5}
