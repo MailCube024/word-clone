@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { sample } from "../../utils";
 import { WORDS } from "../../data";
@@ -10,11 +10,31 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
+  const [guesses, setGuesses] = useState([]);
+
   const onSubmitGuess = (guess) => {
-    console.log(guess);
+    const nextGuesses = [
+      ...guesses,
+      {
+        guess: guess,
+        id: crypto.randomUUID(),
+      },
+    ];
+    setGuesses(nextGuesses);
   };
 
-  return <GuessInput submitGuess={onSubmitGuess} />;
+  return (
+    <>
+      <div>
+        {guesses.map(({ id, guess }) => (
+          <p className="guess" key={id}>
+            {guess}
+          </p>
+        ))}
+      </div>
+      <GuessInput submitGuess={onSubmitGuess} />
+    </>
+  );
 
   // return <>Put a game here!</>;
 }
